@@ -1,0 +1,49 @@
+templates:
+  - "custom_scatter_with_colors"
+
+color_style:
+  qualitative_color:
+    - "#4477AA"
+    - "#EE6677"
+    - "#228833"
+    - "#CCBB44"
+    - "#66CCEE"
+    - "#AA3377"
+    - "#BBBBBB"
+  discrete_color_sequence:
+    - "#141F52"
+    - "#1F2E7A"
+    - "#2E45B8"
+    - "#475ED1"
+    - "#D6DBF5"
+    - "#EBEDFA"
+  two_line_color:
+    - "#00004d"
+    - "#757C88"
+  background_color: "#EFF5F5"
+  text_color: "#3F5661"
+  legend_background_color: "#FFFFFF"
+  grid_color: "#BBBBBB"
+  zeroline_color: "#B7C6CF"
+
+font_style:
+  default_font: "MPLUS1p"
+  available_list:
+    - "MPLUS1p"
+    - "UDEVGothic"
+
+common:
+  title_fontsize: 18
+  xlabel_fontsize: 12
+  ylabel_fontsize: 12
+  legend_fontsize: 10
+  tick_fontsize: 10
+  margin:
+    plotly: {"l": 80, "r": 40, "t": 60, "b": 40}
+
+scatter:
+  opacity: 0.7
+  gridline:
+    gridwidth: 0.1
+    griddash: "dot"
+    
