@@ -1,14 +1,23 @@
 templates:
   - "custom_scatter_with_colors"
+  - "custom_line_with_colors"
 
 color_style:
-  qualitative_color:
+  qualitative_scatter_color:
     - "#4477AA"
     - "#EE6677"
     - "#228833"
     - "#CCBB44"
     - "#66CCEE"
     - "#AA3377"
+    - "#BBBBBB"
+  qualitative_line_color:
+    - "#4477AA"
+    - "#66CCEE"
+    - "#CCBB44"
+    - "#AA3377"
+    - "#228833"
+    - "#EE6677"
     - "#BBBBBB"
   discrete_color_sequence:
     - "#141F52"
@@ -46,4 +55,9 @@ scatter:
   gridline:
     gridwidth: 0.1
     griddash: "dot"
-    
+
+line:
+  opacity: 0.9
+  gridline:
+    gridwidth: 0.1
+    griddash: "dot"

@@ -5,7 +5,8 @@ from pydantic import BaseModel
 
 
 class ColorStyle(BaseModel):
-    qualitative_color: list[str]
+    qualitative_scatter_color: list[str]
+    qualitative_line_color: list[str]
     discrete_color_sequence: list[str]
     two_line_color: list[str]
     background_color: str
@@ -42,6 +43,9 @@ class Scatter(BaseModel):
     opacity: float
     gridline: Gridline
 
+class Line(BaseModel):
+    opacity: float
+    gridline: Gridline
 
 class Config(BaseModel):
     """Config is a model for the configuration file of the project.
@@ -52,6 +56,7 @@ class Config(BaseModel):
     font_style: FontStyle
     common: Common
     scatter: Scatter
+    line: Line
     templates: list[str]
 
 
