@@ -17,15 +17,21 @@ def show_available_fonts():
 def show_available_templates():
     return CONFIG.templates
 
+def set_font(font):
+    if font not in CONFIG.font_style.available_list:
+        raise ValueError("{} is not in templates list".format(font))
+    
+    
+
 
 def set_templates(template):
     if template not in CONFIG.templates:
         raise ValueError("template is not in templates list")
 
-    if template == "custom_scatter_with_colors":
-        custom_template = pct.custom_scatter_with_colors()
-        pio.templates["custom_scatter_with_colors"] = custom_template
-        pio.templates.default = "custom_scatter_with_colors"
+    Template_instance = pct.Templates
+    custom_template = getattr(Template_instance, template)()
+    pio.templates[template] = custom_template
+    pio.templates.default = template
 
 
 def equal_xy_scale(figure_object):
