@@ -1,6 +1,7 @@
 templates:
-  - "custom_scatter_with_colors"
-  - "custom_line_with_colors"
+  - "regmonkey_scatter"
+  - "regmonkey_line"
+  - "regmonkey_twoline"
 
 color_style:
   qualitative_scatter_color:
@@ -29,32 +30,36 @@ color_style:
   two_line_color:
     - "#00004d"
     - "#757C88"
+    - "#757C88"
   background_color: "#EFF5F5"
   text_color: "#3F5661"
-  legend_background_color: "#FFFFFF"
+  legend_background_color: "rgba(255, 255, 255, 0)" #0 represents the alpha (opacity) component, making the color fully transparent
   grid_color: "#BBBBBB"
   zeroline_color: "#B7C6CF"
 
 font_style:
-  default_font: "MPLUS1p"
+  default_font: "IPAexGothic"
   available_list:
     - "MPLUS1p"
-    - "UDEVGothic"
+    - "IPAexGothic"
 
 common:
-  title_fontsize: 18
+  title_fontsize: 16
   xlabel_fontsize: 12
   ylabel_fontsize: 12
   legend_fontsize: 10
   tick_fontsize: 10
+  text_fontsize: 10
   margin:
-    plotly: {"l": 80, "r": 40, "t": 60, "b": 40}
+    plotly: { "l": 80, "r": 40, "t": 60, "b": 40 }
 
 scatter:
   opacity: 0.7
   gridline:
     gridwidth: 0.1
     griddash: "dot"
+  markersize:
+    matplotlib: 3
 
 line:
   opacity: 0.9

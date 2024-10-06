@@ -4,7 +4,7 @@ from regmonkey_style.config import CONFIG
 
 class Templates:
     @classmethod
-    def custom_scatter_with_colors(cls):
+    def regmonkey_scatter(cls):
         custom_template = dict(
             {
                 "data": {
@@ -67,7 +67,7 @@ class Templates:
         return custom_template
 
     @classmethod
-    def custom_line_with_colors(cls):
+    def regmonkey_line(cls):
         custom_template = dict(
             {
                 "data": {
@@ -81,7 +81,10 @@ class Templates:
                     ]
                 },
                 "layout": {
-                    "font": {"size": 12},
+                    "font": {
+                        "size": 10,
+                        "color": CONFIG.color_style.text_color,
+                    },
                     "title": {
                         "font": {"size": CONFIG.common.title_fontsize},
                         "x": 0.1,  # Horizontal position (left-aligned),
@@ -126,5 +129,79 @@ class Templates:
                 },
             }
         )
+
+        return custom_template
+
+    @classmethod
+    def regmonkey_twoline(cls):
+        custom_template = {
+            "layout": {
+                "font": {
+                    "size": 10,
+                    "color": CONFIG.color_style.text_color,
+                },
+                "title": {
+                    "font": {"size": CONFIG.common.title_fontsize},
+                    "x": 0.1,  # Horizontal position (left-aligned),
+                    "yanchor": "top",
+                },
+                "autosize": True,
+                "legend": {
+                    "font": {"size": CONFIG.common.tick_fontsize},
+                    "bgcolor": CONFIG.color_style.legend_background_color,
+                    "traceorder": "normal",
+                },
+                "xaxis": {
+                    "title": "X-axis Title",
+                    "titlefont": {"size": CONFIG.common.title_fontsize},
+                    "tickfont": {"size": CONFIG.common.tick_fontsize},
+                    "showgrid": True,
+                    "griddash": "dot",
+                    "gridcolor": CONFIG.color_style.grid_color,
+                    "gridwidth": CONFIG.scatter.gridline.gridwidth,
+                    "zeroline": True,
+                    "zerolinecolor": CONFIG.color_style.zeroline_color,
+                    "zerolinewidth": CONFIG.scatter.gridline.gridwidth,
+                },
+                "yaxis": {
+                    "title": "Y-axis Title",
+                    "titlefont": {"size": CONFIG.common.title_fontsize},
+                    "tickfont": {"size": CONFIG.common.tick_fontsize},
+                    "scaleanchor": "x",  # Lock y-axis scale to x-axis
+                    "scaleratio": 1,  # Ensure equal scale ratio
+                    "showgrid": True,
+                    "griddash": "dot",
+                    "gridcolor": CONFIG.color_style.grid_color,
+                    "gridwidth": CONFIG.scatter.gridline.gridwidth,
+                    "zeroline": True,
+                    "zerolinecolor": CONFIG.color_style.zeroline_color,
+                    "zerolinewidth": CONFIG.scatter.gridline.gridwidth,
+                },
+                # Axes background color
+                "plot_bgcolor": CONFIG.color_style.background_color,
+                "margin": CONFIG.common.margin.plotly,
+                "paper_bgcolor": "white",  # Figure background color (if needed)
+                "colorway": CONFIG.color_style.two_line_color,  # Color cycle for lines
+            },
+            "data": {
+                "scatter": [
+                    {
+                        "mode": "markers+lines",
+                        "line": {"dash": "solid"},
+                        "connectgaps": True,
+                    },
+                    {
+                        "mode": "markers+lines",
+                        "line": {"dash": "dash"},
+                        "connectgaps": True,
+                    },
+                    {
+                        "mode": "markers+lines",
+                        "line": {"dash": "dot"},
+                        "connectgaps": True,
+                    },
+                ]
+            },
+        }
 
         return custom_template
