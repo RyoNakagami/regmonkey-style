@@ -38,10 +38,10 @@ color_style:
   zeroline_color: "#B7C6CF"
 
 font_style:
-  default_font: "MPLUS1p"
+  default_font: "IPAexGothic"
   available_list:
     - "MPLUS1p"
-    - "UDEVGothic"
+    - "IPAexGothic"
 
 common:
   title_fontsize: 16
