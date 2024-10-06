@@ -62,11 +62,11 @@ class Templates:
                     )
                 ),
                 "axes.facecolor": CONFIG.color_style.background_color,
-                "axes.titlecolor": CONFIG.color_style.text_color,  # Set axes title color
-                "text.color": CONFIG.color_style.text_color,  # Set text color
-                "axes.labelcolor": CONFIG.color_style.text_color,  # Set axes label color
-                "xtick.color": CONFIG.color_style.text_color,  # Set x-tick color
-                "ytick.color": CONFIG.color_style.text_color,  # Set y-tick color
+                "axes.titlecolor": CONFIG.color_style.text_color,
+                "text.color": CONFIG.color_style.text_color,
+                "axes.labelcolor": CONFIG.color_style.text_color,
+                "xtick.color": CONFIG.color_style.text_color,
+                "ytick.color": CONFIG.color_style.text_color,
                 "lines.markersize": CONFIG.scatter.markersize.matplotlib,
             }
         )
@@ -99,9 +99,9 @@ class Templates:
                     )
                 ),
                 "axes.facecolor": CONFIG.color_style.background_color,
-                "axes.titlecolor": CONFIG.color_style.text_color,  # Set axes title color
+                "axes.titlecolor": CONFIG.color_style.text_color,  # Set title color
                 "text.color": CONFIG.color_style.text_color,  # Set text color
-                "axes.labelcolor": CONFIG.color_style.text_color,  # Set axes label color
+                "axes.labelcolor": CONFIG.color_style.text_color,  # Set label color
                 "xtick.color": CONFIG.color_style.text_color,  # Set x-tick color
                 "ytick.color": CONFIG.color_style.text_color,  # Set y-tick color
             }
@@ -142,6 +142,7 @@ class Templates:
             }
         )
         return custom_template
+
 
 # %%
 
