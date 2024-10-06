@@ -30,6 +30,7 @@ class Common(BaseModel):
     xlabel_fontsize: int
     ylabel_fontsize: int
     legend_fontsize: int
+    text_fontsize: int
     tick_fontsize: int
     margin: Margin
 
@@ -39,13 +40,20 @@ class Gridline(BaseModel):
     griddash: str
 
 
+class Markersize(BaseModel):
+    matplotlib: int
+
+
 class Scatter(BaseModel):
     opacity: float
     gridline: Gridline
+    markersize: Markersize
+
 
 class Line(BaseModel):
     opacity: float
     gridline: Gridline
+
 
 class Config(BaseModel):
     """Config is a model for the configuration file of the project.
