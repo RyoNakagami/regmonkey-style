@@ -17,11 +17,10 @@ def show_available_fonts():
 def show_available_templates():
     return CONFIG.templates
 
+
 def set_font(font):
     if font not in CONFIG.font_style.available_list:
         raise ValueError("{} is not in templates list".format(font))
-    
-    
 
 
 def set_templates(template):

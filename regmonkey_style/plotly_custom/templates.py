@@ -4,7 +4,7 @@ from regmonkey_style.config import CONFIG
 
 class Templates:
     @classmethod
-    def custom_scatter_with_colors(self):
+    def custom_scatter_with_colors(cls):
         custom_template = dict(
             {
                 "data": {
@@ -67,7 +67,7 @@ class Templates:
         return custom_template
 
     @classmethod
-    def custom_line_with_colors(self):
+    def custom_line_with_colors(cls):
         custom_template = dict(
             {
                 "data": {

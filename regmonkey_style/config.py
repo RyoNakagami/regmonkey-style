@@ -43,9 +43,11 @@ class Scatter(BaseModel):
     opacity: float
     gridline: Gridline
 
+
 class Line(BaseModel):
     opacity: float
     gridline: Gridline
+
 
 class Config(BaseModel):
     """Config is a model for the configuration file of the project.
