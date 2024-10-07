@@ -60,6 +60,7 @@ scatter:
     griddash: "dot"
   markersize:
     matplotlib: 3
+    plotly: 5
 
 line:
   opacity: 0.9
