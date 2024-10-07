@@ -42,6 +42,7 @@ class Gridline(BaseModel):
 
 class Markersize(BaseModel):
     matplotlib: int
+    plotly: int
 
 
 class Scatter(BaseModel):
