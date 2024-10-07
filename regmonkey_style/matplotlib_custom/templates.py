@@ -36,83 +36,62 @@ def add_transparency(colors, alpha):
 class Templates:
     @classmethod
     def regmonkey_scatter(cls):
-        custom_template = dict(
-            {
-                "font.size": 10,
-                "axes.titlelocation": "left",
-                "axes.titlesize": CONFIG.common.title_fontsize,
-                "axes.labelsize": CONFIG.common.xlabel_fontsize,
-                "xtick.labelsize": CONFIG.common.tick_fontsize,
-                "ytick.labelsize": CONFIG.common.tick_fontsize,
-                "legend.fontsize": CONFIG.common.tick_fontsize,
-                "axes.grid": True,
-                "grid.linestyle": ":",  # equivalent to 'griddash': 'dot'
-                "grid.color": CONFIG.color_style.grid_color,
-                "grid.linewidth": CONFIG.scatter.gridline.gridwidth * 4,
-                "axes.edgecolor": "#000000",
-                "axes.linewidth": CONFIG.scatter.gridline.gridwidth * 10,
-                "axes.spines.top": False,
-                "axes.spines.right": False,
-                "axes.spines.left": True,
-                "axes.spines.bottom": True,
-                "axes.prop_cycle": plt.cycler(
-                    color=add_transparency(
-                        CONFIG.color_style.qualitative_scatter_color,
-                        CONFIG.scatter.opacity,
-                    )
-                ),
-                "axes.facecolor": CONFIG.color_style.background_color,
-                "axes.titlecolor": CONFIG.color_style.text_color,
-                "text.color": CONFIG.color_style.text_color,
-                "axes.labelcolor": CONFIG.color_style.text_color,
-                "xtick.color": CONFIG.color_style.text_color,
-                "ytick.color": CONFIG.color_style.text_color,
-                "lines.markersize": CONFIG.scatter.markersize.matplotlib,
-            }
+        custom_colorway = (
+            plt.cycler(
+                color=add_transparency(
+                    CONFIG.color_style.qualitative_scatter_color,
+                    CONFIG.scatter.opacity,
+                )
+            ),
         )
+        custom_layout_template = cls._create_layout_template(custom_colorway)
+        custom_linewidth_template = cls._create_gridline_template(
+            CONFIG.scatter.gridline.gridwidth * 4,
+            CONFIG.scatter.gridline.gridwidth * 10,
+        )
+
+        custom_template = custom_layout_template | custom_linewidth_template
+
         return custom_template
 
     @classmethod
     def regmonkey_line(cls):
-        custom_template = dict(
-            {
-                "font.size": 10,
-                "axes.titlelocation": "left",
-                "axes.titlesize": CONFIG.common.title_fontsize,
-                "axes.labelsize": CONFIG.common.xlabel_fontsize,
-                "xtick.labelsize": CONFIG.common.tick_fontsize,
-                "ytick.labelsize": CONFIG.common.tick_fontsize,
-                "legend.fontsize": CONFIG.common.tick_fontsize,
-                "axes.grid": True,
-                "grid.linestyle": ":",  # equivalent to 'griddash': 'dot'
-                "grid.color": CONFIG.color_style.grid_color,
-                "grid.linewidth": CONFIG.scatter.gridline.gridwidth * 4,
-                "axes.edgecolor": "#000000",
-                "axes.linewidth": CONFIG.scatter.gridline.gridwidth * 10,
-                "axes.spines.top": False,
-                "axes.spines.right": False,
-                "axes.spines.left": True,
-                "axes.spines.bottom": True,
-                "axes.prop_cycle": plt.cycler(
-                    color=add_transparency(
-                        CONFIG.color_style.qualitative_line_color, CONFIG.line.opacity
-                    )
-                ),
-                "axes.facecolor": CONFIG.color_style.background_color,
-                "axes.titlecolor": CONFIG.color_style.text_color,  # Set title color
-                "text.color": CONFIG.color_style.text_color,  # Set text color
-                "axes.labelcolor": CONFIG.color_style.text_color,  # Set label color
-                "xtick.color": CONFIG.color_style.text_color,  # Set x-tick color
-                "ytick.color": CONFIG.color_style.text_color,  # Set y-tick color
-            }
+        custom_colorway = plt.cycler(
+            color=add_transparency(
+                CONFIG.color_style.qualitative_line_color, CONFIG.line.opacity
+            )
         )
+        custom_layout_template = cls._create_layout_template(custom_colorway)
+        custom_linewidth_template = cls._create_gridline_template(
+            CONFIG.scatter.gridline.gridwidth * 4,
+            CONFIG.scatter.gridline.gridwidth * 10,
+        )
+
+        custom_template = custom_layout_template | custom_linewidth_template
+
         return custom_template
 
     @classmethod
     def regmonkey_twoline(cls):
-        custom_template = dict(
+        custom_colorway = plt.cycler(
+            color=CONFIG.color_style.two_line_color
+        ) + plt.cycler(linestyle=["-", "--", ":"])
+
+        custom_layout_template = cls._create_layout_template(custom_colorway)
+        custom_linewidth_template = cls._create_gridline_template(
+            CONFIG.scatter.gridline.gridwidth * 8,
+            CONFIG.scatter.gridline.gridwidth * 10,
+        )
+
+        custom_template = custom_layout_template | custom_linewidth_template
+
+        return custom_template
+
+    @classmethod
+    def _create_layout_template(cls, color_way):
+        default_layout = dict(
             {
-                "font.size": 10,
+                "font.size": CONFIG.common.text_fontsize,
                 "axes.titlelocation": "left",
                 "axes.titlesize": CONFIG.common.title_fontsize,
                 "axes.labelsize": CONFIG.common.xlabel_fontsize,
@@ -124,16 +103,12 @@ class Templates:
                 "grid.linestyle": ":",
                 "axes.edgecolor": "#000000",
                 "grid.color": CONFIG.color_style.grid_color,
-                "grid.linewidth": CONFIG.line.gridline.gridwidth * 10,
-                "axes.linewidth": CONFIG.line.gridline.gridwidth * 10,
                 "axes.facecolor": CONFIG.color_style.background_color,
-                "axes.edgecolor": "black",
                 "axes.spines.top": False,
                 "axes.spines.right": False,
                 "axes.spines.left": True,
                 "axes.spines.bottom": True,
-                "axes.prop_cycle": plt.cycler(color=CONFIG.color_style.two_line_color)
-                + plt.cycler(linestyle=["-", "--", ":"]),
+                "axes.prop_cycle": color_way,
                 "text.color": CONFIG.color_style.text_color,  # Set text color
                 "axes.labelcolor": CONFIG.color_style.text_color,  # Set axes label color
                 "xtick.color": CONFIG.color_style.text_color,  # Set x-tick color
@@ -141,4 +116,14 @@ class Templates:
                 "axes.titlecolor": CONFIG.color_style.text_color,  # Set axes title color
             }
         )
-        return custom_template
+        return default_layout
+
+    @classmethod
+    def _create_gridline_template(cls, gridline_width, axesline_width):
+        default_layout = dict(
+            {
+                "grid.linewidth": gridline_width,
+                "axes.linewidth": axesline_width,
+            }
+        )
+        return default_layout
