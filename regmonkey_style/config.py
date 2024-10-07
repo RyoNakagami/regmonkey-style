@@ -87,8 +87,6 @@ def new_config(path_to_config: pathlib.Path) -> Config:
 
     with open(path_to_config) as f:
         yaml_config = yaml.safe_load(f)
-        print()
-
     config: Config = Config.model_validate(yaml_config)
 
     return config
