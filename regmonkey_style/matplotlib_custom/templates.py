@@ -36,13 +36,10 @@ def add_transparency(colors, alpha):
 class Templates:
     @classmethod
     def regmonkey_scatter(cls):
-        custom_colorway = (
-            plt.cycler(
-                color=add_transparency(
-                    CONFIG.color_style.qualitative_scatter_color,
-                    CONFIG.scatter.opacity,
-                )
-            ),
+        custom_colorway = plt.cycler(
+            color=add_transparency(
+                CONFIG.color_style.qualitative_scatter_color, CONFIG.scatter.opacity
+            )
         )
         custom_layout_template = cls._create_layout_template(custom_colorway)
         custom_linewidth_template = cls._create_gridline_template(
@@ -52,6 +49,12 @@ class Templates:
 
         custom_template = custom_layout_template | custom_linewidth_template
 
+        ## update
+        scatter_custom = dict(
+            {"lines.markersize": CONFIG.scatter.markersize.matplotlib}
+        )
+
+        custom_template.update(scatter_custom)
         return custom_template
 
     @classmethod
