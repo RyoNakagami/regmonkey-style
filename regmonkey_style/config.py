@@ -10,6 +10,7 @@ class ColorStyle(BaseModel):
     discrete_color_sequence: list[str]
     two_line_color: list[str]
     background_color: str
+    paper_bgcolor: str
     text_color: str
     legend_background_color: str
     grid_color: str
@@ -25,19 +26,14 @@ class Margin(BaseModel):
     plotly: dict
 
 
-class Common(BaseModel):
-    title_fontsize: int
-    xlabel_fontsize: int
-    ylabel_fontsize: int
-    legend_fontsize: int
-    text_fontsize: int
-    tick_fontsize: int
-    margin: Margin
+class Griddash(BaseModel):
+    plotly: str
+    matplotlib: str
 
 
 class Gridline(BaseModel):
     gridwidth: float
-    griddash: str
+    griddash: Griddash
 
 
 class Markersize(BaseModel):
@@ -45,15 +41,43 @@ class Markersize(BaseModel):
     plotly: int
 
 
+class Fontsize(BaseModel):
+    title_fontsize: int
+    xlabel_fontsize: int
+    ylabel_fontsize: int
+    legend_fontsize: int
+    text_fontsize: int
+    tick_fontsize: int
+    standoff: int
+
+
+class Common(BaseModel):
+    fontsize: Fontsize
+    margin: Margin
+    gridline: Gridline
+    line_width: int
+
+
 class Scatter(BaseModel):
     opacity: float
-    gridline: Gridline
     markersize: Markersize
 
 
 class Line(BaseModel):
     opacity: float
+
+
+class Boxplot(BaseModel):
+    opacity: float
+    outliercolor: str
+    line_color: str
+    fillcolor: str
+    jitter: float
+    markersize: Markersize
+    fontsize: Fontsize
+    linewdith: float
     gridline: Gridline
+    margin: Margin
 
 
 class Config(BaseModel):
@@ -66,6 +90,7 @@ class Config(BaseModel):
     common: Common
     scatter: Scatter
     line: Line
+    boxplot: Boxplot
     templates: list[str]
 
 
