@@ -43,8 +43,8 @@ class Templates:
         )
         custom_layout_template = cls._create_layout_template(custom_colorway)
         custom_linewidth_template = cls._create_gridline_template(
-            CONFIG.scatter.gridline.gridwidth * 4,
-            CONFIG.scatter.gridline.gridwidth * 10,
+            CONFIG.common.gridline.gridwidth * 4,
+            CONFIG.common.gridline.gridwidth * 10,
         )
 
         custom_template = custom_layout_template | custom_linewidth_template
@@ -66,8 +66,8 @@ class Templates:
         )
         custom_layout_template = cls._create_layout_template(custom_colorway)
         custom_linewidth_template = cls._create_gridline_template(
-            CONFIG.scatter.gridline.gridwidth * 4,
-            CONFIG.scatter.gridline.gridwidth * 10,
+            CONFIG.common.gridline.gridwidth * 4,
+            CONFIG.common.gridline.gridwidth * 10,
         )
 
         custom_template = custom_layout_template | custom_linewidth_template
@@ -78,12 +78,26 @@ class Templates:
     def regmonkey_twoline(cls):
         custom_colorway = plt.cycler(
             color=CONFIG.color_style.two_line_color
-        ) + plt.cycler(linestyle=["-", "--", ":"])
+        ) + plt.cycler(linestyle=["-", "-", "-", "--", "--", ":", ":"])
 
         custom_layout_template = cls._create_layout_template(custom_colorway)
         custom_linewidth_template = cls._create_gridline_template(
-            CONFIG.scatter.gridline.gridwidth * 8,
-            CONFIG.scatter.gridline.gridwidth * 10,
+            CONFIG.common.gridline.gridwidth * 8,
+            CONFIG.common.gridline.gridwidth * 10,
+        )
+
+        custom_template = custom_layout_template | custom_linewidth_template
+
+        return custom_template
+
+    @classmethod
+    def regmonkey_boxplot(cls):
+        custom_colorway = plt.cycler(color=CONFIG.color_style.two_line_color)
+
+        custom_layout_template = cls._create_layout_template(custom_colorway)
+        custom_linewidth_template = cls._create_gridline_template(
+            CONFIG.common.gridline.gridwidth * 8,
+            CONFIG.common.gridline.gridwidth * 10,
         )
 
         custom_template = custom_layout_template | custom_linewidth_template
@@ -92,26 +106,36 @@ class Templates:
 
     @classmethod
     def _create_layout_template(cls, color_way):
+        matplotlib_plotly_ratio = 1.3
         default_layout = dict(
             {
-                "font.size": CONFIG.common.text_fontsize,
+                "figure.facecolor": CONFIG.color_style.background_color,
+                "axes.facecolor": CONFIG.color_style.background_color,
+                "axes.edgecolor": "black",
+                "font.size": CONFIG.common.fontsize.text_fontsize
+                / matplotlib_plotly_ratio,
                 "axes.titlelocation": "left",
-                "axes.titlesize": CONFIG.common.title_fontsize,
-                "axes.labelsize": CONFIG.common.xlabel_fontsize,
-                "xtick.labelsize": CONFIG.common.xlabel_fontsize,
-                "ytick.labelsize": CONFIG.common.tick_fontsize,
-                "legend.fontsize": CONFIG.common.legend_fontsize,
+                "axes.titlesize": CONFIG.common.fontsize.title_fontsize
+                / matplotlib_plotly_ratio,
+                "axes.labelsize": CONFIG.common.fontsize.xlabel_fontsize
+                / matplotlib_plotly_ratio,
+                "xtick.labelsize": CONFIG.common.fontsize.xlabel_fontsize
+                / matplotlib_plotly_ratio,
+                "ytick.labelsize": CONFIG.common.fontsize.tick_fontsize
+                / matplotlib_plotly_ratio,
+                "legend.fontsize": CONFIG.common.fontsize.legend_fontsize
+                / matplotlib_plotly_ratio,
                 "legend.frameon": False,
+                "legend.loc": "upper right",  # Change location to upper left
                 "axes.grid": True,
                 "grid.linestyle": ":",
-                "axes.edgecolor": "#000000",
                 "grid.color": CONFIG.color_style.grid_color,
-                "axes.facecolor": CONFIG.color_style.background_color,
                 "axes.spines.top": False,
                 "axes.spines.right": False,
                 "axes.spines.left": True,
                 "axes.spines.bottom": True,
                 "axes.prop_cycle": color_way,
+                "figure.subplot.wspace": 20,
                 "text.color": CONFIG.color_style.text_color,  # Set text color
                 "axes.labelcolor": CONFIG.color_style.text_color,  # Set axes label color
                 "xtick.color": CONFIG.color_style.text_color,  # Set x-tick color
