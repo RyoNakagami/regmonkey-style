@@ -36,13 +36,13 @@ def set_templates(template):
         raise ValueError(f"{template} is not in the templates list")
 
     # Set Plotly template
-    set_plotly_template(template)
+    __set_plotly_template(template)
 
     # Set Matplotlib template
-    set_matplotlib_template(template)
+    __set_matplotlib_template(template)
 
 
-def set_plotly_template(template):
+def __set_plotly_template(template):
     """
     Set the Plotly template for the application.
 
@@ -55,7 +55,7 @@ def set_plotly_template(template):
     pio.templates.default = template
 
 
-def set_matplotlib_template(template):
+def __set_matplotlib_template(template):
     """
     Set the Matplotlib template for the application.
 
