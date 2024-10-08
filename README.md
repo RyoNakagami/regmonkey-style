@@ -1,8 +1,8 @@
-Sure, here's a README for the [`regmonkey_style`] package:
+Sure, here's a README for the [`regmonkey_style`](https://github.com/RyoNakagami/regmonkey-style) package:
 
 # regmonkey_style
 
-[`regmonkey_style`] is a Python package designed to simplify the customization of Plotly visualizations. It provides functions to set default fonts, show available fonts and templates, set custom fonts and templates, and ensure equal scaling for x and y axes in Plotly figures.
+[`regmonkey_style`](https://github.com/RyoNakagami/regmonkey-style) is a Python package designed to simplify the customization of Plotly visualizations. It provides functions to set default fonts, show available fonts and templates, set custom fonts and templates, and ensure equal scaling for x and y axes in Plotly figures.
 
 ## Installation
 
@@ -93,7 +93,7 @@ restore_default()
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/RyoNakagami/regmonkey-style/blob/main/LICENSE) file for details.
 
 ## Contributing
 
@@ -101,4 +101,4 @@ Contributions are welcome! Please open an issue or submit a pull request on GitH
 
 ## Contact
 
-For any questions or issues, please contact the maintainer at Ryo Nakagami.
+For any questions or issues, please contact the maintainer at [Ryo Nakagami](nakagamiryo@alumni.u-tokyo.ac.jp).
