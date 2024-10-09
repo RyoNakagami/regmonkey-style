@@ -2,6 +2,7 @@
 from regmonkey_style.config import CONFIG
 import plotly.io as pio
 import matplotlib.pyplot as plt
+import seaborn as sns
 import regmonkey_style.common.setup_custom_font as scf
 import regmonkey_style.plotly_custom.templates as pct
 import regmonkey_style.matplotlib_custom.templates as mct
@@ -64,6 +65,7 @@ def __set_matplotlib_template(template):
     """
     matplotlib_template_instance = mct.Templates
     matplotlib_custom_template = getattr(matplotlib_template_instance, template)()
+    sns.set_style(rc=matplotlib_custom_template)
     plt.rcParams.update(matplotlib_custom_template)
 
 

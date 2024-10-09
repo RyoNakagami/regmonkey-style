@@ -92,7 +92,11 @@ class Templates:
 
     @classmethod
     def regmonkey_boxplot(cls):
-        custom_colorway = plt.cycler(color=CONFIG.color_style.two_line_color)
+        custom_colorway = plt.cycler(
+            color=add_transparency(
+                CONFIG.color_style.two_line_color, 0.8
+            )
+        )
 
         custom_layout_template = cls._create_layout_template(custom_colorway)
         custom_linewidth_template = cls._create_gridline_template(
@@ -100,7 +104,22 @@ class Templates:
             CONFIG.common.gridline.gridwidth * 10,
         )
 
+        custom_boxplot_template = dict(
+            {
+                "axes.spines.left": False,
+                "boxplot.medianprops.color": CONFIG.boxplot.line_color,
+                "boxplot.flierprops.markersize": CONFIG.boxplot.markersize.matplotlib,
+                "boxplot.flierprops.markeredgecolor": CONFIG.boxplot.outliercolor,
+                "patch.facecolor": "white",
+                "boxplot.patchartist": True,
+                "patch.force_edgecolor": True,
+                "boxplot.capprops.color": CONFIG.boxplot.line_color,
+                "boxplot.boxprops.color": CONFIG.boxplot.line_color,
+            }
+        )
+
         custom_template = custom_layout_template | custom_linewidth_template
+        custom_template.update(custom_boxplot_template)
 
         return custom_template
 
@@ -116,7 +135,7 @@ class Templates:
                 / matplotlib_plotly_ratio,
                 "axes.titlelocation": "left",
                 "axes.titlesize": CONFIG.common.fontsize.title_fontsize
-                / matplotlib_plotly_ratio,
+                / (matplotlib_plotly_ratio * 1.1),
                 "axes.labelsize": CONFIG.common.fontsize.xlabel_fontsize
                 / matplotlib_plotly_ratio,
                 "xtick.labelsize": CONFIG.common.fontsize.xlabel_fontsize
