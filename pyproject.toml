@@ -1,11 +1,13 @@
 [tool.poetry]
 name = "regmonkey_style"
-version = "1.3.0"
+version = "1.4.0"
 description = "plotly and matplotlib style for statistics-for-regression-monkey"
 authors = ["RyoNak <nakagamiryo0901@gmail.com>"]
 license = "MIT"
 readme = "README.md" 
 package-mode = true
+homepage = "https://github.com/RyoNakagami"
+repository = "https://github.com/RyoNakagami/regmonkey-style"
 
 [tool.poetry.dependencies]
 python = "^3.10"
