@@ -84,7 +84,7 @@ boxplot:
   fillcolor: "white"
   jitter: 0
   markersize:
-    matplotlib: 3
+    matplotlib: 5
     plotly: 5
   fontsize:
     title_fontsize: 24
