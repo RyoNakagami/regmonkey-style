@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "regmonkey_style"
-version = "1.5.1"
+version = "1.6.0"
 description = "plotly and matplotlib style for statistics-for-regression-monkey"
 authors = ["RyoNak <nakagamiryo0901@gmail.com>"]
 license = "MIT"
