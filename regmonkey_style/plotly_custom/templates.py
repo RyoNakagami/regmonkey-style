@@ -197,8 +197,10 @@ class Templates:
                 },
                 "title": {
                     "font": {"size": CONFIG.common.fontsize.title_fontsize},
-                    "x": 0.08,  # Horizontal position (left-aligned),
+                    "x": 0.001,  # Horizontal position (left-aligned),
                     "yanchor": "top",
+                    "xanchor": "left",
+                    "xref": "paper"
                 },
                 "autosize": True,
                 "legend": {
