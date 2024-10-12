@@ -93,9 +93,7 @@ class Templates:
     @classmethod
     def regmonkey_boxplot(cls):
         custom_colorway = plt.cycler(
-            color=add_transparency(
-                CONFIG.color_style.two_line_color, 0.8
-            )
+            color=add_transparency(CONFIG.color_style.two_line_color, 0.8)
         )
 
         custom_layout_template = cls._create_layout_template(custom_colorway)
@@ -110,6 +108,7 @@ class Templates:
                 "boxplot.medianprops.color": CONFIG.boxplot.line_color,
                 "boxplot.flierprops.markersize": CONFIG.boxplot.markersize.matplotlib,
                 "boxplot.flierprops.markeredgecolor": CONFIG.boxplot.outliercolor,
+                "boxplot.flierprops.markersize": 5,
                 "patch.facecolor": "white",
                 "boxplot.patchartist": True,
                 "patch.force_edgecolor": True,
@@ -154,7 +153,7 @@ class Templates:
                 "axes.spines.left": True,
                 "axes.spines.bottom": True,
                 "axes.prop_cycle": color_way,
-                "figure.subplot.wspace": 20,
+                "figure.subplot.wspace": 0.2,
                 "text.color": CONFIG.color_style.text_color,  # Set text color
                 "axes.labelcolor": CONFIG.color_style.text_color,  # Set axes label color
                 "xtick.color": CONFIG.color_style.text_color,  # Set x-tick color
