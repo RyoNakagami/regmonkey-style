@@ -137,7 +137,7 @@ class Templates:
                 / (matplotlib_plotly_ratio * 1.1),
                 "axes.labelsize": CONFIG.common.fontsize.xlabel_fontsize
                 / matplotlib_plotly_ratio,
-                "xtick.labelsize": CONFIG.common.fontsize.xlabel_fontsize
+                "xtick.labelsize": CONFIG.common.fontsize.tick_fontsize
                 / matplotlib_plotly_ratio,
                 "ytick.labelsize": CONFIG.common.fontsize.tick_fontsize
                 / matplotlib_plotly_ratio,
